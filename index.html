@@ -1,0 +1,100 @@
+<!doctype html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Address Collector</title>
+    <link rel="stylesheet" href="styles.css">
+
+  </head>
+
+  <body>
+    
+    <form>
+      <div class="form-field-wrapper">
+        <div class="form-field">
+          <label>First Name:</label>
+          <input type="text" name="first_name" />
+        </div>
+        <div class="form-field">
+          <label>Last Name:</label>
+          <input type="text" name="last_name" />
+        </div>
+      </div>
+      <div class="form-field">
+        <label>Address (line 1):</label>
+        <input type="text" name="address1" />
+      </div>
+      <div class="form-field">
+        <label>Address (line 2):</label>
+        <input type="text" name="address2" />
+      </div>
+      <div class="form-field-wrapper">
+        <div class="form-field">
+          <label>City:</label>
+          <input type="text" name="city" />
+        </div>
+        <div class="form-field-sm">
+          <label>State:</label>
+          <input type="text" name="state" />
+        </div>
+      </div>
+      <div class="form-field-sm">
+        <label>Zip Code:</label>
+        <input type="text" name="zip_code" />
+      </div>
+      <div class="form-field">
+        <label>Home Phone:</label>
+        <input type="text" name="home_phone" />
+      </div>
+      <div class="form-field">
+        <label>Work Phone:</label>
+        <input type="text" name="work_phone" />
+      </div>
+      <div class="form-field">
+        <label>Email:</label>
+        <input type="text" name="email" />
+      </div>
+      <div class="form-field">
+        <input type="submit" name="submit" value="Submit" />
+      </div>
+    </form>
+
+    <script>
+
+      const handleSubmit = (e) => {
+
+        // prevent native form submission
+        e.preventDefault();
+
+        // get the form data 
+        const data = new FormData(form);
+
+        // convert form data to JSON object
+        const json = Object.fromEntries(data.entries());
+        console.log('json object is ', json);
+
+        // send json to api
+        fetch('http://apiurl', {
+          method: 'POST',
+          body: json,
+          headers: {
+            'Content-type': 'application/json; charset=UTF-8'
+          }
+        }).then(function (response) {
+          // do something with the response
+        }).catch(function (error) {
+          // do something with the error
+        });
+        
+      }
+
+      const form = document.querySelector('form');
+      form.addEventListener('submit', handleSubmit);
+
+    </script>
+
+  </body>
+</html>
