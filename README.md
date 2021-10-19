@@ -8,7 +8,7 @@ an html form using javascript to submit json data to your endpoint.
 Simply replace `'http://apiurl'` with your endopint point (that accpets POSTs) 
 
 If you are really good, you can also hadd sokme error handling :> 
-
+```
   // send json to api
         fetch('http://apiurl', {
           method: 'POST',
@@ -23,3 +23,4 @@ If you are really good, you can also hadd sokme error handling :>
         });
         
       }
+```
